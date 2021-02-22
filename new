@@ -1,0 +1,71 @@
+# Project 2
+
+# Tony Maldonado-Perez
+# amaldo36@uic.edu
+
+# I hereby attest that I have adhered to the rules for quizzes and projects as well as UIC's
+# Academic Integrity standards. Signed: Anthony Maldonado-Perez
+
+
+# Question 1
+
+#a)
+
+import random
+
+def Function1(a, b):
+    List_of_int = []
+    for i in range(a, b + 1):
+        if (i% a != 0 and i% b != 0):
+            List_of_int.append(i)
+
+    return List_of_int
+
+# Question 2
+
+# (a
+
+# def to find the number customers per to
+def findNumberOfCustomers(initial_amount, limit_on_unit):
+    cust = 0
+    while (initial_amount > 0):
+        # must generate a random number for n - limit_on_unit)
+        possible_amount = int((random.random() * 100) % limit_on_unit) + 1
+        initial_amount = initial_amount - possible_amount
+        cust = cust + 1
+    return cust
+
+# (b
+
+def Function2(a, b):
+    initial_amount = a
+    limit_on_unit = b
+    # part b to find the average 
+    cust_sum = 0
+    # 1000 times iteration
+    for i in range(1000):
+        cust_sum = cust_sum + findNumberOfCustomers(initial_amount, limit_on_unit)
+    average = cust_sum / 1000
+    # When I plugged in the example, I was having a hard time trying to get an average of 42.499
+    return average
+
+# (c
+
+while (True):
+    choice = int(input("Please choose option 1 , 2, or 3 : "))
+
+    if (choice == 1):
+        a = int(input("Please give value for a : "))
+        b = int(input("Please give value for b :  "))
+        print("The output is: ", Function1(a, b))
+
+    elif (choice == 2):
+        a = int(input("Please give the initial amount of toilet paper : "))
+        b = int(input("Please give the maximum limit of toilet paper per customer : "))
+        print("The average number of customers served before running out after 1000 simulation is :", Function2(a, b))
+
+    elif (choice == 3):
+        break
+    else:
+        print("Choose between options 1-3")
+
